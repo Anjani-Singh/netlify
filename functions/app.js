@@ -10,7 +10,7 @@ const router = express.Router();
 // });
 
 router.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "index.html"));
+    res.sendFile(path.join(__dirname, "../public", "index.html"));
 });
 
 // Serve static files (HTML, CSS, JS) from the "public" directory
