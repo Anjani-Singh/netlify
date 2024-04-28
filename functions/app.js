@@ -17,5 +17,6 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(publicPath, "index.html"));
 });
 
-app.use("/.netlify/functions/app", router);
+// app.use("/.netlify/functions/app", router);
+
 module.exports.handler = serverless(app);
