@@ -5,20 +5,31 @@ const fs = require('fs')
 
 const app = express();
 
-
-const htmlPath = path.join(__dirname, "../public/index.html");
-
 app.get("/.netlify/functions/app", (req, res) => {
-    fs.readFile(htmlPath, (err, data) => {
-        if (err) {
-            console.error(err);
-            return res.status(500).send("Error reading HTML file");
-        }
-        res.setHeader("Content-Type", "text/html");
-        res.send(data);
-    });
+    const htmlContent = `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Welcome to Mobupps Product Management Portal</title>
+            <style>
+                /* Your CSS styles here */
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>Welcome to <span style="color: red;">Mobupps</span> Product Management Portal</h1>
+                <p>This is a portal for managing <strong>Mobupps</strong> products.</p>
+                <button class="btn">Get Started</button>
+            </div>
+        </body>
+        </html>
+    `;
+    
+    res.setHeader("Content-Type", "text/html");
+    res.send(htmlContent);
 });
-
 
 // const router = express.Router();
 
