@@ -1,22 +1,36 @@
 const express = require("express");
 const serverless = require("serverless-http");
-const app = express();
 const path = require("path");
 
-const router = express.Router();
+const app = express();
+
+
+app.get("/", (req, res) => {
+    const htmlPath = path.join(__dirname, "../public/index.html");
+    fs.readFile(htmlPath, (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send("Error reading HTML file");
+        }
+        res.setHeader("Content-Type", "text/html");
+        res.send(data);
+    });
+});
+
+// const router = express.Router();
 
 // router.get("/", (req, res) => {
 //     res.send("Welcome to Mobupps product management portal...");
 // });
 
-const publicPath = path.resolve(__dirname, "../public");
+// const publicPath = path.resolve(__dirname, "../public");
 
-app.use(express.static(publicPath));
+// app.use(express.static(publicPath));
 
-router.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public", "index.html"));
-});
+// router.get("/", (req, res) => {
+//     res.sendFile(path.join(__dirname, "../public", "index.html"));
+// });
 
-app.use("/.netlify/functions/app", router);
+// app.use("/.netlify/functions/app", router);
 
 module.exports.handler = serverless(app);
