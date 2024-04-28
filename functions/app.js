@@ -5,7 +5,7 @@ const path = require("path");
 const app = express();
 
 
-app.get("/", (req, res) => {
+app.get("/.netlify/functions/app", (req, res) => {
     const htmlPath = path.join(__dirname, "../public/index.html");
     fs.readFile(htmlPath, (err, data) => {
         if (err) {
@@ -16,6 +16,7 @@ app.get("/", (req, res) => {
         res.send(data);
     });
 });
+
 
 // const router = express.Router();
 
