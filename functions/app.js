@@ -9,15 +9,13 @@ const router = express.Router();
 //     res.send("Welcome to Mobupps product management portal...");
 // });
 
+const publicPath = path.resolve(__dirname, "../public");
+
+app.use(express.static(publicPath));
+
 router.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../public", "index.html"));
 });
-
-// Serve static files (HTML, CSS, JS) from the "public" directory
-const publicPath = path.resolve(__dirname, "../public");
-// console.log("public path", publicPath)
-
-app.use(express.static(publicPath));
 
 app.use("/.netlify/functions/app", router);
 
