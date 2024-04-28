@@ -1,6 +1,7 @@
 const express = require("express");
 const serverless = require("serverless-http");
 const path = require("path");
+const fs = require('fs')
 
 const app = express();
 
