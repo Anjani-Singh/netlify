@@ -4,7 +4,7 @@ const app = express();
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    res.send("Welcome to Mobupps product management portal..");
+    res.send("Welcome to Mobupps product management portal...");
 });
 
 app.use("/.netlify/functions/app", router);
