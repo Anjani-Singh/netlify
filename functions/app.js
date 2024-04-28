@@ -5,9 +5,9 @@ const path = require("path");
 
 const router = express.Router();
 
-// router.get("/", (req, res) => {
-//     res.send("Welcome to Mobupps product management portal...");
-// });
+router.get("/", (req, res) => {
+    res.send("Welcome to Mobupps product management portal...");
+});
 
 // const publicPath = path.join(__dirname, "public");
 
@@ -17,6 +17,6 @@ const router = express.Router();
 //   res.sendFile(path.join(publicPath, "index.html"));
 // });
 
-// app.use("/.netlify/functions/app", router);
+app.use("/.netlify/functions/app", router);
 
 module.exports.handler = serverless(app);
