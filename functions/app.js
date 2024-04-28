@@ -14,7 +14,9 @@ router.get("/", (req, res) => {
 });
 
 // Serve static files (HTML, CSS, JS) from the "public" directory
-const publicPath = path.resolve(__dirname, "public");
+const publicPath = path.resolve(__dirname, "../public");
+// console.log("public path", publicPath)
+
 app.use(express.static(publicPath));
 
 app.use("/.netlify/functions/app", router);
